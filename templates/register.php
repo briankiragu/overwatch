@@ -1,4 +1,7 @@
+<?php
 session_start();
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
@@ -189,7 +192,7 @@ try {
                 $_SESSION['status'] = "landlord";
                 $_SESSION['avatar'] = $avatar;
                 $_SESSION['admin'] = $admin;
-                header('Location: ../dashboard_ld');
+                header('Location: ../dashboard_ld.php', true);
 
               // } else {
                 // echo 'Could not add image to database';
@@ -226,7 +229,7 @@ try {
                   $_SESSION['status'] = "tenant";
                   $_SESSION['avatar'] = $avatar;
                   $_SESSION['admin'] = $admin;
-                  header('Location: ../dashboard_tn');
+                  header('Location: ../dashboard_tn.php');
                 }
               }
             }
