@@ -1,3 +1,5 @@
+<?php
+?>
 <div class="col-sm-12 well">
   <div class="row">
     <div class="col-md-3">
@@ -12,9 +14,10 @@
 	      Review
 	    </button>
     </div>
-    <div class="col-sm-12 collapse" id="{{ x.estate_ID }}">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus vel, rerum delectus rem architecto pariatur consequatur harum ipsum unde. Assumenda ea illo, ad quis! Magni quia expedita dolorum cupiditate recusandae.
+    <div class="col-sm-12 collapse" id="{{ x.estate_ID }}" data-ng-repeat="r in reviews">
+      <div>
+		{{ r.content }}
+      </div>
     </div>
   </div>
 </div>
-<?php

@@ -40,4 +40,9 @@ app.controller('viewController', function ($scope, $http) {
         .then(function (response) {
             $scope.estates = response.data;
         });
+
+	$http.get("php/viewReviews.php")
+        .then(function (response) {
+            $scope.reviews = response.data;
+        });
 });

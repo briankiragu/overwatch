@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +47,7 @@
 -->
       <div class="col-md-4 col-md-offset-4" id="searchReview">
         <form class="form-inline">
-          <div class="form-group">
+          <div class="form-group input-append">
             <input type="text" class="form-control" id="searchValue" placeholder="Search an estate" />
           </div>
           <div class="form-group">
@@ -75,3 +77,6 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
+<?php
+?>
