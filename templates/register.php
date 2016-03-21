@@ -217,7 +217,7 @@ try {
                   echo 'Email already exists';
 
               } else {
-                if (move_uploaded_file($avatar_tmp, '../img/avatars/'. $avatar)) {
+//                if (move_uploaded_file($avatar_tmp, '../img/avatars/'. $avatar)) {
                   $query_addUser = "INSERT INTO tenants
                   (tenant_ID, surname, other_name, email, password, admin, avatar)
                   VALUES('".$ID."', '".$surname."', '".$other_name."',
@@ -230,7 +230,7 @@ try {
                   $_SESSION['avatar'] = $avatar;
                   $_SESSION['admin'] = $admin;
                   header('Location: ../dashboard_tn.php');
-                }
+//                }
               }
             }
           } else {

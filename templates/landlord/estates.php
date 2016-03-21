@@ -10,6 +10,7 @@
   </div>
 </div>
 -->
+<!--
 <div class="col-sm-12 estate">
   <div class="row">
     <div class="col-sm-12 col-md-3 tag-header well">
@@ -19,5 +20,9 @@
       <p>{{ x.location_of_estate }}</p>
     </div>
   </div>
+</div>
+-->
+<div class="col-sm-12">
+
 </div>
 <?php

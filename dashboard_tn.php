@@ -45,6 +45,7 @@
           <li><a href="#updates">Updates</a></li>
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
+<!--          <li><a href="#"><?php echo $_SESSION['name']; ?></li>-->
           <li><a href="templates/landlord/messages.php">Messages <span class="badge">42</span></a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
