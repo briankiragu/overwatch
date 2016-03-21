@@ -23,7 +23,7 @@
 </head>
 <body data-ng-app="overwatch">
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -85,7 +85,7 @@
               <h3 class="panel-title">Your Estate</h3>
             </div> -->
             <div class="panel-body tag-body">
-              <img src="img/tags/estates/14_d.png" alt="Estate" class="img-responsive" />
+              <a href="templates/tenant/myestate.php"><img src="img/tags/estates/14_d.png" alt="Estate" class="img-responsive" /></a>
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
               <h3 class="panel-title">Your Landlord</h3>
             </div> -->
             <div class="panel-body tag-body">
-              <img src="img/tags/landlords/landlord4_b.png" alt="Landlord" class="img-responsive" />
+              <a href="templates/tenant/mylandord.php"><img src="img/tags/landlords/landlord4_b.png" alt="Landlord" class="img-responsive" /></a>
             </div>
           </div>
         </div>
@@ -107,10 +107,14 @@
               <h3 class="panel-title">Your Updates</h3>
             </div> -->
             <div class="panel-body tag-body">
-              <img src="img/tags/updates/3_d.png" alt="Updates" class="img-responsive" />
+              <a href="#updates"><img src="img/tags/updates/3_d.png" alt="Updates" class="img-responsive" /></a>
             </div>
           </div>
         </div>
+
+        <section id="updates">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita culpa, quia quos ullam ipsa corporis. Ex at nihil ab quos placeat odio repellendus sint doloribus fugiat. Nisi, obcaecati reiciendis. Nulla.
+        </section>
 
       </div>
     </div>

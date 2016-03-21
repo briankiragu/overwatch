@@ -1,5 +1,6 @@
 body {
-  background-color: whitesmoke; }
+  background-color: whitesmoke;
+  padding-top: 70px; }
 
 #hero {
   z-index: -50;
