@@ -1,10 +1,11 @@
 <?php
 session_start();
+
 //open connection to mysql db
 require_once 'connect/connect.inc.php';
 
 //fetch table rows from mysql db
-$review_query = "SELECT * FROM `reviews`";
+$review_query = "SELECT * FROM `reviews` ORDER BY `review_date`";
 $query_results = $conn->prepare($review_query);
 $query_results->execute();
 
