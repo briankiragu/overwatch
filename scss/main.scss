@@ -1,5 +1,4 @@
 body {
-  background-color: whitesmoke;
   padding-top: 70px;
 }
 
@@ -40,6 +39,11 @@ body {
 
 // Dashboard_ld
 // ----------------------------------------------------------------------------
+
+#main {
+  background-color: white;
+}
+
 .estate:hover {
   background-color: rgba(105, 105, 105, .2);
 }

@@ -118,7 +118,7 @@ define('GW_UPLOADPATH', 'img/avatars/'); ?>
           </div>
 
           <!-- Main Panel -->
-          <div class="col-xs-12 col-md-9 well">
+          <div class="col-xs-12 col-md-9 well" id="main">
 
             <!-- Tenants table -->
             <div class="table-responsive">

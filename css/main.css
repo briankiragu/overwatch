@@ -1,5 +1,4 @@
 body {
-  background-color: whitesmoke;
   padding-top: 70px; }
 
 #hero {
@@ -26,6 +25,9 @@ body {
 
 #hero {
   overflow-y: hidden; }
+
+#main {
+  background-color: white; }
 
 .estate:hover {
   background-color: rgba(105, 105, 105, 0.2); }
