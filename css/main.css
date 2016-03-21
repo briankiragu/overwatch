@@ -1,0 +1,68 @@
+body {
+  background-color: whitesmoke; }
+
+#hero {
+  z-index: -50;
+  background-color: #ffea00; }
+
+#searchReview {
+  background-color: #ffea00;
+  border-radius: 5px;
+  padding: 15px;
+  padding-right: 0;
+  padding-left: 35px;
+  position: relative;
+  top: 190px;
+  vertical-align: middle; }
+
+.navbar {
+  background-color: #ffea00;
+  /*yellow accent-4*/ }
+
+#navigator {
+  background-color: #ffea00;
+  border-radius: 0; }
+
+#hero {
+  overflow-y: hidden; }
+
+.estate:hover {
+  background-color: rgba(105, 105, 105, 0.2); }
+
+.addEstate {
+  opacity: .1;
+  z-index: -10; }
+  .addEstate span {
+    position: relative;
+    bottom: 100px;
+    z-index: 10; }
+
+.estate {
+  height: 150px; }
+  .estate .caption {
+    padding: 5px;
+    background-color: rgba(195, 195, 195, 0.1);
+    transition: all ease-in .5s;
+    border-radius: 5px; }
+  .estate .caption:hover {
+    background-color: rgba(195, 195, 195, 0.7); }
+
+.tag .tag-header {
+  background-color: #0d47a1;
+  height: 150px; }
+.tag .tag-body img {
+  transition: all ease-in .4s; }
+.tag .tag-body img:hover {
+  opacity: .5;
+  transform: scale(1.04);
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 3px 3px 5px 6px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */ }
+.tag .tag-link {
+  position: relative;
+  left: 100px; }
+
+/*# sourceMappingURL=main.css.map */

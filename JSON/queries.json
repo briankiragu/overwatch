@@ -1,0 +1,14 @@
+{
+  "landlords": {
+    "selectAll": "SELECT * FROM `landlords`",
+    "selectUsers": "SELECT * FROM `landlords` WHERE `landlord_ID` = '$landlord_ID'"
+  },
+  "tenants": {
+    "selectAll": "SELECT * FROM `tenants`",
+    "selectUsers": "SELECT * FROM `tenants` WHERE `tenant_ID` = '.$tenant_ID.'"
+  },
+  "estates": {
+    "selectAll": "SELECT * FROM `estates`",
+    "selectEstates": "SELECT * FROM `estates` WHERE `estate_ID` = '.$estate_ID.'"
+  }
+}
