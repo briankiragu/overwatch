@@ -1,5 +1,5 @@
 $(document).ready(function () {
     "use strict";
 
-    $(".dropdown-button").dropdown();
+    $('#example').tooltip(data-animation="true");
 });
