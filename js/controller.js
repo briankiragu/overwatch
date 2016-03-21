@@ -34,7 +34,7 @@ app.controller('viewController', function ($scope, $http) {
 
 	$scope.viewReview = function () {
 		$scope.viewState = !$scope.viewState;
-	}
+	};
 
     $http.get("php/viewTenants.php")
         .then(function (response) {

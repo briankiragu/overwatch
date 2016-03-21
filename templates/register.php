@@ -58,30 +58,40 @@ ob_start();
   <div class="container-fluid">
     <form enctype="multipart/form-data" class="form-horizontal"
      action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
+<!--      Field for surname-->
       <div class="form-group">
         <label for="surname" class="col-sm-2 control-label">Surname</label>
         <div class="col-sm-8">
           <input type="text" name="surname" class="form-control" id="surname" placeholder="Enter your surname" required />
         </div>
       </div>
+
+<!--      Field for other name-->
       <div class="form-group">
         <label for="otherName" class="col-sm-2 control-label">Other Name</label>
         <div class="col-sm-8">
           <input type="text" name="otherName" class="form-control" id="otherName" placeholder="Enter your other name" required />
         </div>
       </div>
+
+<!--     Field for email-->
       <div class="form-group">
         <label for="email" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-8">
           <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required />
         </div>
       </div>
+
+<!--     field for national ID-->
       <div class="form-group">
         <label for="ID" class="col-sm-2 control-label">National ID</label>
         <div class="col-sm-8">
           <input type="number" name="ID" class="form-control" id="ID" placeholder="Enter your national ID" required />
         </div>
       </div>
+
+<!--     Field for password-->
       <div class="form-group">
         <label for="password" class="col-sm-2 control-label">Password</label>
         <div class="col-sm-4">
@@ -94,12 +104,32 @@ ob_start();
           </div>
         </div>
       </div>
+
+<!--      Field for estate -->
+<!--
+      <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Estate</label>
+        <div class="col-sm-4">
+          <input type="text" name="nameOfEstate" class="form-control" id="name_of_estate" placeholder="Name of Estate" required />
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <input type="text" name="locationOfEstate" class="form-control"
+            id="location_of_estate" placeholder="Location of estate" required />
+          </div>
+        </div>
+      </div>
+-->
+
+<!--     Field for avatar -->
       <div class="form-group">
         <label for="avatar" class="col-sm-2 control-label">Avatar</label>
         <div class="col-sm-4">
           <input type="file" class="form-control" name="avatar" accept="image/*" required />
         </div>
       </div>
+
+<!--     Field for status -->
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <div class="radio">
@@ -116,6 +146,8 @@ ob_start();
           </div>
         </div>
       </div>
+
+<!--     Submit button -->
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" name="submit" class="btn btn-primary">Register</button>
@@ -155,19 +187,26 @@ try {
     $password = $_POST['password'];
     $conf_pass = $_POST['confPassword'];
     $pass = md5($password);
+//    $name_of_estate = $_POST['nameOfEstate'];
+//    $location_of_estate = $_POST['locationOfEstate'];
     $avatar = $_FILES['avatar']['name'];
     $avatar_tmp = $_FILES['avatar']['tmp_name'];
     $status = $_POST['status'];
     $admin = 'n';
 
+//    Confirm that passwords match
     if ($password === $conf_pass) {
+
+//		Check status of new user
         if ($status == 'landlord') {
 
+//			Select all landlord ID data from landlord table
             $query_checkUser = "SELECT * FROM `landlords` WHERE `landlord_ID` = '".$ID."'";
             $users = $conn->prepare($query_checkUser);
             $users->execute();
             $count_ID = $users->rowCount();
 
+//			Select all landlord email data from landlord table
             $query_checkEmail = "SELECT * FROM `landlords` WHERE `email` = '".$email."'";
             $emails = $conn->prepare($query_checkEmail);
             $emails->execute();
