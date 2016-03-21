@@ -17,11 +17,11 @@
     <div class="col-md-7">
       <h2>{{ x.name_of_estate }} <small>{{ x.location_of_estate }}</small></h2>
       <p>
-        ILorem ipsum dolor sit amet, consectetur adipisicing elit. Odit deleniti distinctio similique dolore, blanditiis officiis ea temporibus, facere aperiam sunt, magni perspiciatis sit architecto dolor optio dolores quo pariatur ut.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit deleniti distinctio similique dolore, blanditiis officiis ea temporibus, facere aperiam sunt, magni perspiciatis sit architecto dolor optio dolores quo pariatur ut.
       </p>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ x.estate_ID }}" aria-expanded="false" aria-controls="{{ x.estate_ID }}">
-	      Review
-	    </button>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ x.estate_ID }}" aria-expanded="false" aria-controls="{{ x.estate_ID }}">
+        Review
+      </button>
     </div>
 
 <!--    Container for ratings-->
@@ -31,14 +31,10 @@
 	    <span class="glyphicon glyphicon-star"></span>
       </div>
     </div>
-<!--
+
+<!--    Review collapse bar-->
     <div class="col-sm-12 collapse" id="{{ x.estate_ID }}" data-ng-repeat="r in reviews">
       <div>{{ r.content }}</div>
     </div>
--->
-    <ul class="nav nav-list col-sm-12 collapse" id="{{ x.estate_ID }}" data-ng-repeat="r in reviews">
-      <li>{{ r.content }}</li>
-      <li class="divider"></li>
-    </ul>
   </div>
 </div>
