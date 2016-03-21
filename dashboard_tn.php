@@ -85,7 +85,7 @@
               <h3 class="panel-title">Your Estate</h3>
             </div> -->
             <div class="panel-body tag-body">
-              <img src="img/tags/estates/14_c.jpg" alt="Estate" class="img-responsive" />
+              <img src="img/tags/estates/14_d.png" alt="Estate" class="img-responsive" />
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
               <h3 class="panel-title">Your Landlord</h3>
             </div> -->
             <div class="panel-body tag-body">
-              <img src="img/tags/landlords/landlord4.jpg" alt="Landlord" class="img-responsive" />
+              <img src="img/tags/landlords/landlord4_b.png" alt="Landlord" class="img-responsive" />
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@
               <h3 class="panel-title">Your Updates</h3>
             </div> -->
             <div class="panel-body tag-body">
-              <img src="img/tags/updates/2.jpg" alt="Updates" class="img-responsive" />
+              <img src="img/tags/updates/3_d.png" alt="Updates" class="img-responsive" />
             </div>
           </div>
         </div>
