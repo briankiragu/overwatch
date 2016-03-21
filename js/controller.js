@@ -6,7 +6,6 @@ app.controller('viewController', function ($scope, $http) {
     $scope.addTenantForm = false;
     $scope.icon = "plus";
     $scope.searchBar = "searchBar";
-	$scope.viewState = false;
 
     $scope.showTenants = function () {
         $scope.show_tenants = true;
@@ -31,10 +30,6 @@ app.controller('viewController', function ($scope, $http) {
 			$scope.icon = "remove";
 		}
     };
-
-	$scope.viewReview = function () {
-		$scope.viewState = !$scope.viewState;
-	};
 
     $http.get("php/viewTenants.php")
         .then(function (response) {
