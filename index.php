@@ -24,7 +24,7 @@
 </head>
 <body onload="init()" id="index">
 
-  <nav class="navbar navbar-default" id="navigator">
+  <nav class="navbar navbar-default navbar-fixed-top" id="navigator">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Overwatch</a>
@@ -46,23 +46,13 @@
       <div class="col-md-4 col-md-offset-4" id="searchReview">
         <form class="form-inline">
           <div class="form-group">
-           <select class="form-control">
-            <option value="" selected disabled>Name of estate</option>
-            <option>Mugoya</option>
-            <option>Madaraka</option>
-            <option>Kasuku Center</option>
-            <option>Kileleshwa</option>
-            <option>Five Star</option>
-          </select>
+            <input type="text" class="form-control" id="searchValue" placeholder="Search an estate" />
           </div>
           <div class="form-group">
-            <select class="form-control">
-            <option value="" selected disabled>Location of estate</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+           <select class="form-control">
+            <option value="" selected disabled>Search by</option>
+            <option value="name">Name</option>
+            <option value="location">Location</option>
           </select>
           </div>
           <button type="submit" class="btn btn-default">Search</button>
