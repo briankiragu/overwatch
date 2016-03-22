@@ -5,11 +5,11 @@ session_start();
 require_once 'connect/connect.inc.php';
 
 //fetch table rows from mysql db
-$review_query = "SELECT * FROM `reviews` ORDER BY `review_date`";
-$query_results = $conn->prepare($review_query);
+$reviews_query = "SELECT * FROM `reviews` ORDER BY `review_date`";
+$query_results = $conn->prepare($reviews_query);
 $query_results->execute();
 
-$review_array = array();
+$reviews_array = array();
 
 while ($reviews = $query_results->fetch(PDO::FETCH_ASSOC)) {
     $review_array[] = $reviews;
