@@ -9,6 +9,7 @@ $query_results = $conn->prepare($ratings_query);
 $query_results->execute();
 $count_ratings = $query_results->rowCount();
 
+// Add all values together
 while ($ratings = $query_results->fetch(PDO::FETCH_ASSOC)) {
     $total_ratings += $ratings['rating'];
 }
