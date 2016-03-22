@@ -15,4 +15,4 @@ while ($ratings = $query_results->fetch(PDO::FETCH_ASSOC)) {
 
 $average_rating = $total_ratings / $count_ratings;
 
-echo $average_rating;
+echo ceil($average_rating);
