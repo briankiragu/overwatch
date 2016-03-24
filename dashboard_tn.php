@@ -76,15 +76,13 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+<!--
   <main>
     <div class="container-fluid">
       <div class="row">
 
         <div class="col-sm-12 col-md-4 tag">
           <div class="panel panel-default">
-            <!-- <div class="panel-heading tag-heading well">
-              <h3 class="panel-title">Your Estate</h3>
-            </div> -->
             <div class="panel-body tag-body">
               <a href="templates/tenant/myestate.php"><img src="img/tags/estates/14_d.png" alt="Estate" class="img-responsive" /></a>
             </div>
@@ -93,9 +91,6 @@
 
         <div class="col-sm-12 col-md-4 tag">
           <div class="panel panel-default">
-            <!-- <div class="panel-heading tag-heading well">
-              <h3 class="panel-title">Your Landlord</h3>
-            </div> -->
             <div class="panel-body tag-body">
               <a href="templates/tenant/mylandord.php"><img src="img/tags/landlords/landlord4_b.png" alt="Landlord" class="img-responsive" /></a>
             </div>
@@ -104,9 +99,6 @@
 
         <div class="col-sm-12 col-md-4 tag">
           <div class="panel panel-default">
-            <!-- <div class="panel-heading tag-heading well">
-              <h3 class="panel-title">Your Updates</h3>
-            </div> -->
             <div class="panel-body tag-body">
               <a href="#updates"><img src="img/tags/updates/3_d.png" alt="Updates" class="img-responsive" /></a>
             </div>
@@ -120,6 +112,13 @@
       </div>
     </div>
   </main>
+-->
+
+<ul class="nav nav-tabs">
+  <li><a href="#estate" data-toggle="tab">Estate</a></li>
+  <li><a href="#landlord" data-toggle="tab">Landlord</a></li>
+  <li><a href="#updates" data-toggle="tab">Updates</a></li>
+</ul>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
