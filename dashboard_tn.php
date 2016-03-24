@@ -120,6 +120,30 @@
   <li><a href="#updates" data-toggle="tab">Updates</a></li>
 </ul>
 
+<div class="tab-content">
+  <div class="tab-pane active" id="estate">
+    <div class="panel panel-default">
+      <div class="panel-body tag-body">
+        <a href="templates/tenant/myestate.php"><img src="img/tags/estates/14_d.png" alt="Estate" class="img-responsive" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="landlord">
+    <div class="panel panel-default">
+      <div class="panel-body tag-body">
+        <a href="templates/tenant/mylandord.php"><img src="img/tags/landlords/landlord4_b.png" alt="Landlord" class="img-responsive" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="updates">
+    <div class="panel panel-default">
+      <div class="panel-body tag-body">
+        <a href="#updates"><img src="img/tags/updates/3_d.png" alt="Updates" class="img-responsive" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <script src="js/jquery.js"></script>
