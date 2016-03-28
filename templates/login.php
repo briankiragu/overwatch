@@ -46,7 +46,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../index.php">OverWatch</a>
+<!--        <a class="navbar-brand" href="../index.php">OverWatch</a>-->
+        <ul class="breadcrumb navbar-brand" style="background-color: #ffea00; margin: 0">
+          <li><a href="../index.php">Overwatch</a> <span class="divider"></span></li>
+          <li class="active">Login</li>
+        </ul>
       </div>
     </div><!-- /.container-fluid -->
   </nav>

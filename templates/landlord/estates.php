@@ -35,6 +35,7 @@
 <!--    Review collapse bar-->
     <div class="col-sm-12 collapse" id="{{ x.estate_ID }}" data-ng-repeat="r in reviews">
       <div>{{ r.content }}</div>
+      <span class="divider"></span>
     </div>
   </div>
 </div>
