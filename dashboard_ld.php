@@ -123,13 +123,19 @@ define('GW_UPLOADPATH', 'img/avatars/landlords/'); ?>
             <!-- Tenants table -->
             <div class="table-responsive">
               <table class="table table-hover" data-ng-show="show_tenants">
-                    <?php include_once 'templates/landlord/tenants.php'; ?>
+
+                <!--                   Including php files-->
+                <?php include_once 'templates/landlord/tenants.php'; ?>
+
               </table>
             </div>
 
             <!-- Estates view -->
             <div data-ng-repeat="x in estates" data-ng-show="show_estates">
-                <?php include_once 'templates/landlord/estates.php'; ?>
+
+              <!--               Including php files-->
+              <?php include_once 'templates/landlord/estates.php'; ?>
+
             </div>
             <div data-ng-show="show_estates">
               <div class="col-xs-12 col-md-3 well">
