@@ -10,10 +10,10 @@ if (isset($_POST['submit'])) {
     $thumbnail_temp = $_FILES['thumbnail']['tmp_name'];
 
     // Check of the name of that estate exists
-    $estate_query = "SELECT `name_of_estate` FROM `estates` WHERE `estate_cluster_ID` = '".$_SESSION['id']."'";
+    $estate_query = "SELECT `name_of_estate` FROM `estates` WHERE `name_of_estate` = '".$name."'";
     $results = $conn->prepare($estate_query);
     $results->execute();
-    $count = mysqli_num_rows($results);
+	$count = $results->rowCount();
 
     // If the name does not exists.
     if ($count == 0) {
@@ -25,7 +25,10 @@ if (isset($_POST['submit'])) {
         $conn->exec($add_query) or die('Could not add estate');
       // }
     } else {
-        echo 'Already exists';
+        echo '<div class="alert">
+			    <button type="button" class="close" data-dismiss="alert">&times;</button>
+			    <strong>Error!</strong> That estate already exists.
+			  </div>';
     }
 
     // Go back to previous page.
