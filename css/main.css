@@ -26,6 +26,9 @@ body {
 #hero {
   overflow-y: hidden; }
 
+.alert {
+  color: dimgray; }
+
 #main {
   background-color: white; }
 

@@ -1,3 +1,5 @@
 $(document).ready(function () {
-    "use strict";
+	"use strict";
+
+	$(".alert").alert('close');
 });

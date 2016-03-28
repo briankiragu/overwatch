@@ -46,11 +46,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-<!--        <a class="navbar-brand" href="../index.php">OverWatch</a>-->
+        <a class="navbar-brand" href="../index.php">Overwatch</a>
+<!--
         <ul class="breadcrumb navbar-brand" style="background-color: #ffea00; margin: 0">
           <li><a href="../index.php">Overwatch</a> <span class="divider"></span></li>
           <li class="active">Login</li>
         </ul>
+-->
       </div>
     </div><!-- /.container-fluid -->
   </nav>
@@ -118,7 +120,7 @@ try {
                 $_SESSION['id'] = $user_results['landlord_ID'];
                 $_SESSION['name'] = $user_results['surname'];
                 $_SESSION['status'] = "landlord";
-                $_SESSION['avatar'] = $user_results['avatar'];
+                $_SESSION['avatar'] = $user_results['landlord_ID'] ."_". $user_results['avatar'];
                 $_SESSION['admin'] = $user_results['admin'];
 
                 if ($user_results['admin'] == 'n') {
@@ -128,7 +130,10 @@ try {
                     header('location: ../dashboard_ld.php'); // Redirecting To Other Page
                 }
             } else {
-                echo "No user";
+                echo '<div class="alert" style="background-color: #fff176">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Error!</strong> No such user exists.
+					  </div>';
 
             }
 
@@ -148,7 +153,7 @@ try {
                     $_SESSION['id'] = $user_results['tenant_ID'];
                     $_SESSION['name'] = $user_results['surname'];
                     $_SESSION['status'] = "tenant";
-                    $_SESSION['avatar'] = $user_results['avatar'];
+                    $_SESSION['avatar'] =  $user_results['tenant_ID'] ."_". $user_results['avatar'];
                     $_SESSION['admin'] = $user_results['admin'];
 
                 if ($user_results['admin'] == 'n') {
@@ -158,7 +163,10 @@ try {
                     header('location: ../dashboard_tn.php'); // Redirecting To Other Page
                 }
             } else {
-                echo "No user";
+                echo '<div class="alert" style="background-color: #fff176; color: dimgray">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Error!</strong> No such user exists.
+					  </div>';
             }
         }
     }

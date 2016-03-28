@@ -1,7 +1,7 @@
 app.controller('viewController', function ($scope, $http) {
     "use strict";
     $scope.show_tenants = false;
-    $scope.show_estates = false;
+    $scope.show_estates = true;
     $scope.addEstateForm = false;
     $scope.addTenantForm = false;
     $scope.icon = "plus";

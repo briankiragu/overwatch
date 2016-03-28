@@ -9,9 +9,9 @@
   <td>
     <?php
     if ($_SESSION['avatar'] == null) {
-      echo '<img src="img/avatars/default.png" alt="Avatar" class="img-responsive img-circle" height="50" width="50" />';
+      echo '<img src="img/avatars/tenants/default.png" alt="Avatar" class="img-responsive img-circle" height="50" width="50" />';
     } else {
-      echo '<img src="img/avatars/{{ x.avatar }}" alt="Avatar" class="img-responsive img-circle" height="50" width="50" />';
+      echo '<img src="img/avatars/tenants/{{ x.avatar }}" alt="Avatar" class="img-responsive img-circle" height="50" width="50" />';
     }
     ?>
   </td>

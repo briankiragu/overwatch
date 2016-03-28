@@ -50,12 +50,14 @@ ob_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-<!--        <a class="navbar-brand" href="../index.php">OverWatch</a>-->
+        <a class="navbar-brand" href="../index.php">Overwatch</a>
 
+<!--
         <ul class="breadcrumb navbar-brand" style="background-color: #ffea00; margin: 0">
           <li><a href="../index.php">Overwatch</a> <span class="divider"></span></li>
           <li class="active">Register</li>
         </ul
+-->
       </div>
     </div><!-- /.container-fluid -->
   </nav>
@@ -111,27 +113,11 @@ ob_start();
         </div>
       </div>
 
-<!--      Field for estate -->
-<!--
-      <div class="form-group">
-        <label for="password" class="col-sm-2 control-label">Estate</label>
-        <div class="col-sm-4">
-          <input type="text" name="nameOfEstate" class="form-control" id="name_of_estate" placeholder="Name of Estate" required />
-        </div>
-        <div class="form-group">
-          <div class="col-sm-4">
-            <input type="text" name="locationOfEstate" class="form-control"
-            id="location_of_estate" placeholder="Location of estate" required />
-          </div>
-        </div>
-      </div>
--->
-
 <!--     Field for avatar -->
       <div class="form-group">
         <label for="avatar" class="col-sm-2 control-label">Avatar</label>
         <div class="col-sm-4">
-          <input type="file" class="form-control" name="avatar" accept="image/*" required />
+          <input type="file" class="form-control" name="avatar" accept="image/*" />
         </div>
       </div>
 
@@ -185,103 +171,155 @@ ob_start();
 require '../php/connect/connect.inc.php';
 
 try {
-  if (isset($_POST['submit'])) {
-    $ID = $_POST['ID'];
-    $surname = $_POST['surname'];
-    $other_name = $_POST['otherName'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $conf_pass = $_POST['confPassword'];
-    $pass = md5($password);
-//    $name_of_estate = $_POST['nameOfEstate'];
-//    $location_of_estate = $_POST['locationOfEstate'];
-    $avatar = $_FILES['avatar']['name'];
-    $avatar_tmp = $_FILES['avatar']['tmp_name'];
-    $status = $_POST['status'];
-    $admin = 'n';
+	if (isset($_POST['submit'])) {
+		$ID = $_POST['ID'];
+		$surname = $_POST['surname'];
+		$other_name = $_POST['otherName'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$conf_pass = $_POST['confPassword'];
+		$pass = md5($password);
+		$avatar = $_FILES['avatar']['name'];
+		$avatar_tmp = $_FILES['avatar']['tmp_name'];
+		$status = $_POST['status'];
+		$admin = 'n';
 
-//    Confirm that passwords match
-    if ($password === $conf_pass) {
+	//    Confirm that passwords match
+		if ($password === $conf_pass) {
 
-//		Check status of new user
-        if ($status == 'landlord') {
+	//		Check status of new user
+			if ($status == 'landlord') {
 
-//			Select all landlord ID data from landlord table
-            $query_checkUser = "SELECT * FROM `landlords` WHERE `landlord_ID` = '".$ID."'";
-            $users = $conn->prepare($query_checkUser);
-            $users->execute();
-            $count_ID = $users->rowCount();
+	//			Select all landlord ID data from landlord table
+				$query_checkUser = "SELECT * FROM `landlords` WHERE `landlord_ID` = '".$ID."'";
+				$users = $conn->prepare($query_checkUser);
+				$users->execute();
+				$count_ID = $users->rowCount();
 
-//			Select all landlord email data from landlord table
-            $query_checkEmail = "SELECT * FROM `landlords` WHERE `email` = '".$email."'";
-            $emails = $conn->prepare($query_checkEmail);
-            $emails->execute();
-            $count_email = $emails->rowCount();
+	//			Select all landlord email data from landlord table
+				$query_checkEmail = "SELECT * FROM `landlords` WHERE `email` = '".$email."'";
+				$emails = $conn->prepare($query_checkEmail);
+				$emails->execute();
+				$count_email = $emails->rowCount();
 
-            if ($count_ID > 0) {
-                echo 'Landlord ID already exists';
+				if ($count_ID > 0) {
+					  echo '<div class="alert">
+							  <button type="button" class="close" data-dismiss="alert">&times;</button>
+							  <strong>Error!</strong> That ID already exists.
+							</div>';
 
-            } elseif ($count_email > 0) {
-                echo 'Email already exists';
+				} elseif ($count_email > 0) {
+					echo '<div class="alert">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>Error!</strong> That email already exists.
+						  </div>';
 
-            } else {
-              // if (move_uploaded_file($avatar_tmp, '../img/avatars/' . $avatar . $landlord_ID )) {
-                $query_addUser = "INSERT INTO landlords
-                (landlord_ID, surname, other_name, email, password, estate_cluster_ID, admin, avatar)
-                VALUES('".$ID."', '".$surname."', '".$other_name."',
-                '".$email."', '".$pass."', '".$ID."', '".$admin."', '".$avatar."')";
-                $conn->exec($query_addUser) or die('Could not add user');
+				} else {
+					if (isset($_POST['avatar'])) {
+						if (move_uploaded_file($avatar_tmp, '../img/avatars/landlords' . $ID . "_" . $avatar)) {
+						$query_addUser = "INSERT INTO landlords
+						(landlord_ID, surname, other_name, email, password, estate_cluster_ID, admin, avatar)
+						VALUES('".$ID."', '".$surname."', '".$other_name."',
+						'".$email."', '".$pass."', '".$ID."', '".$admin."', '".$ID . "_" . $avatar."')";
+						$conn->exec($query_addUser) or die('Could not add user');
 
-                $_SESSION['id'] = $ID;
-                $_SESSION['name'] = $surname;
-                $_SESSION['status'] = "landlord";
-                $_SESSION['avatar'] = $avatar;
-                $_SESSION['admin'] = $admin;
-                header('Location: ../dashboard_ld.php', true);
+						$_SESSION['id'] = $ID;
+						$_SESSION['name'] = $surname;
+						$_SESSION['status'] = "landlord";
+						$_SESSION['avatar'] = $avatar;
+						$_SESSION['admin'] = $admin;
+						header('Location: ../dashboard_ld.php', true);
 
-              // } else {
-                // echo 'Could not add image to database';
-              // }
-            }
-          } elseif ($status == 'tenant') {
+					   } else {
+							echo '<div class="alert" style="background-color: #fff176">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									<strong>Error!</strong> Could not add image.
+								  </div>';
+					   }
 
-              $query_checkUser = "SELECT * FROM `tenants` WHERE `tenant_ID` = '".$ID."'";
-              $users = $conn->prepare($query_checkUser);
-              $users->execute();
-              $count_ID = $users->rowCount();
+					} else {
+						$avatar = 'default.png';
+						$query_addUser = "INSERT INTO `landlords`
+						(landlord_ID, surname, other_name, email, password, estate_cluster_ID, admin, avatar)
+						VALUES('".$ID."', '".$surname."', '".$other_name."',
+						'".$email."', '".$pass."', '".$ID."', '".$admin."', '".$avatar."')";
+						$conn->exec($query_addUser) or die('Could not add user');
 
-              $query_checkEmail = "SELECT * FROM `tenants` WHERE `email` = '".$email."'";
-              $emails = $conn->prepare($query_checkEmail);
-              $emails->execute();
-              $count_email = $emails->rowCount();
+						$_SESSION['id'] = $ID;
+						$_SESSION['name'] = $surname;
+						$_SESSION['status'] = "landlord";
+						$_SESSION['avatar'] = $avatar;
+						$_SESSION['admin'] = $admin;
+						header('Location: ../dashboard_ld.php', true);
+					}
+				}
+			  } elseif ($status == 'tenant') {
 
-              if ($count_ID > 0) {
-                  echo 'Tenant ID already exists';
+				  $query_checkUser = "SELECT * FROM `tenants` WHERE `tenant_ID` = '".$ID."'";
+				  $users = $conn->prepare($query_checkUser);
+				  $users->execute();
+				  $count_ID = $users->rowCount();
 
-              } elseif ($count_email > 0) {
-                  echo 'Email already exists';
+				  $query_checkEmail = "SELECT * FROM `tenants` WHERE `email` = '".$email."'";
+				  $emails = $conn->prepare($query_checkEmail);
+				  $emails->execute();
+				  $count_email = $emails->rowCount();
 
-              } else {
-//                if (move_uploaded_file($avatar_tmp, '../img/avatars/'. $avatar)) {
-                  $query_addUser = "INSERT INTO tenants
-                  (tenant_ID, surname, other_name, email, password, admin, avatar)
-                  VALUES('".$ID."', '".$surname."', '".$other_name."',
-                  '".$email."', '".$pass."', '".$admin."', '".$avatar."')";
-                  $conn->exec($query_addUser) or die('Could not add user');
+				  if ($count_ID > 0) {
+					  echo '<div class="alert" style="background-color: #fff176">
+							  <button type="button" class="close" data-dismiss="alert">&times;</button>
+							  <strong>Error!</strong> That ID already exists.
+							</div>';
 
-                  $_SESSION['id'] = $ID;
-                  $_SESSION['name'] = $surname;
-                  $_SESSION['status'] = "tenant";
-                  $_SESSION['avatar'] = $avatar;
-                  $_SESSION['admin'] = $admin;
-                  header('Location: ../dashboard_tn.php');
-//                }
-              }
-            }
-          } else {
-                echo 'Passwords do not match';
-            }
-          }
+				  } elseif ($count_email > 0) {
+					  echo '<div class="alert" style="background-color: #fff176">
+							  <button type="button" class="close" data-dismiss="alert">&times;</button>
+							  <strong>Error!</strong> That email already exists.
+							</div>';
+
+				  } else {
+					  if (isset($_POST['avatar'])) {
+							if (move_uploaded_file($avatar_tmp, '../img/avatars/tenants/' . $ID . "_" . $avatar)) {
+							  $query_addUser = "INSERT INTO tenants
+							  (tenant_ID, surname, other_name, email, password, admin, avatar)
+							  VALUES('".$ID."', '".$surname."', '".$other_name."',
+							  '".$email."', '".$pass."', '".$admin."', '". $ID. "_". $avatar."')";
+							  $conn->exec($query_addUser) or die('Could not add user');
+
+							  $_SESSION['id'] = $ID;
+							  $_SESSION['name'] = $surname;
+							  $_SESSION['status'] = "tenant";
+							  $_SESSION['avatar'] = $ID . "_". $avatar;
+							  $_SESSION['admin'] = $admin;
+							  header('Location: ../dashboard_tn.php');
+							} else {
+								echo '<div class="alert" style="background-color: #fff176">
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+										<strong>Error!</strong> Could not add image.
+									  </div>';
+							}
+
+					  } else {
+						  $avatar = 'default.png';
+						  $query_addUser = "INSERT INTO tenants
+						  (tenant_ID, surname, other_name, email, password, admin, avatar)
+						  VALUES('".$ID."', '".$surname."', '".$other_name."',
+						  '".$email."', '".$pass."', '".$admin."', '".$avatar."')";
+						  $conn->exec($query_addUser) or die('Could not add user');
+
+						  $_SESSION['id'] = $ID;
+						  $_SESSION['name'] = $surname;
+						  $_SESSION['status'] = "tenant";
+						  $_SESSION['avatar'] = $ID . "_". $avatar;
+						  $_SESSION['admin'] = $admin;
+						  header('Location: ../dashboard_tn.php');
+					  }
+				  }
+			  }
+		} else {
+			echo 'Passwords do not match';
+		}
+	}
 } catch (PDOException $e) {
   echo "Error: ".$e->getMessage();
 }

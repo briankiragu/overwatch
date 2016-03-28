@@ -1,5 +1,5 @@
 <?php session_start();
-define('GW_UPLOADPATH', 'img/avatars/'); ?>
+define('GW_UPLOADPATH', 'img/avatars/landlords/'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -151,7 +151,7 @@ define('GW_UPLOADPATH', 'img/avatars/'); ?>
 
             <!-- Add Estate form -->
             <form enctype="multipart/form-data" class="form-horizontal"
-             action="php/addEstate.php" method="post" data-ng-show="addEstateForm">
+             action="php/addEstate.php" method="POST" data-ng-show="addEstateForm">
               <div class="form-group">
                 <div class="col-sm-10">
                   <input type="text" name="nameOfEstate" class="form-control"
