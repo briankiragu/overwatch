@@ -46,18 +46,19 @@ session_start();
       </div>
 -->
       <div class="col-md-4 col-md-offset-4" id="searchReview">
-        <form class="form-inline">
+        <form class="form-inline" action="<?php echo $_SERVER['PHP_SELF']; ?>"
+         method="get">
           <div class="form-group input-append">
-            <input type="text" class="form-control" id="searchValue" placeholder="Search an estate" />
+            <input type="text" name="query" class="form-control" id="searchValue" placeholder="Search an estate" />
           </div>
           <div class="form-group">
-           <select class="form-control">
+           <select class="form-control" name="parameter">
             <option value="" selected disabled>Search by</option>
             <option value="name">Name</option>
             <option value="location">Location</option>
           </select>
           </div>
-          <button type="submit" class="btn btn-default">Search</button>
+          <button type="submit" name="submit" class="btn btn-default">Search</button>
         </form>
 	  </div>
     </div>
@@ -70,13 +71,89 @@ session_start();
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
 
-  <!-- Include createJS -->
-  <script src="js/easel.js"></script>
+  <!-- Import AngularJS -->
+  <script src="js/angular.min.js"></script>
 
-  <!-- Personal Js -->
+  <!-- Personal JS -->
+  <script src="js/app.js"></script>
+  <script src="js/controller.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
 
 <?php
+require_once 'php/connect/connect.inc.php';
+
+if (isset($_GET['submit'])) {
+	$query = $_GET['query'];
+	$parameter = $_GET['parameter'];
+
+	if ($parameter === 'name') {
+		$estate_query = "SELECT * FROM `estates` WHERE `name_of_estate` = '".$query."'";
+
+	} else if ($parameter === 'location') {
+		$estate_query = "SELECT * FROM `estates` WHERE `location_of_estate` = '".$query."'";
+
+	} else {
+		echo 'No option selected';
+	}
+
+	$result = $conn->prepare($estate_query);
+	$result->execute();
+	$count = $result->rowCount();
+    $estate = $result->fetch(PDO::FETCH_ASSOC);
+
+	echo '<div class="col-md-4 col-md-offset-4" id="searchReview">
+            <form class="form-inline" action="'.$_SERVER['PHP_SELF'].'"
+             method="get">
+              <div class="form-group input-append">
+                <input type="text" name="query" class="form-control" id="searchValue" placeholder="Search an estate" />
+              </div>
+              <div class="form-group">
+               <select class="form-control" name="parameter">
+                <option value="" selected disabled>Search by</option>
+                <option value="name">Name</option>
+                <option value="location">Location</option>
+              </select>
+              </div>
+              <button type="submit" name="submit" class="btn btn-default">Search</button>
+            </form>
+          </div>';
+
+    echo '<div data-ng-repeat="x in estates" data-ng-show="show_estates">';
+	while ($count > 0) {
+        echo '<div class="col-sm-12 well">
+                <div class="row">
+                  <div class="col-md-3">
+                    <img src="img/thumbnails/photo-1438978280647-f359d95ebda4.jpg" alt="Thumbnail" class="img-responsive" />
+                  </div>
+                  <div class="col-md-7">
+                    <h2>{{ x.name_of_estate }} <small>{{ x.location_of_estate }}</small></h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit deleniti distinctio similique dolore, blanditiis officiis ea temporibus, facere aperiam sunt, magni perspiciatis sit architecto dolor optio dolores quo pariatur ut.
+                    </p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ x.estate_ID }}" aria-expanded="false" aria-controls="{{ x.estate_ID }}">
+                      Reviews
+                    </button>
+                  </div>
+
+              <!--    Container for ratings-->
+                  <div class="col-md-2">
+                    <h3>Rating</h3>
+                    <div class="stars">
+                      <span class="glyphicon glyphicon-star"></span>
+                    </div>
+                  </div>
+
+              <!--    Review collapse bar-->
+                  <div class="col-sm-12 collapse" id="{{ x.estate_ID }}" data-ng-repeat="r in reviews">
+                    <div>{{ r.content }}</div>
+                    <span class="divider"></span>
+                  </div>
+                </div>
+              </div>';
+        $count--;
+	}
+    echo '</div>';
+}
 ?>
